@@ -2,7 +2,7 @@
 
 ## Forest Cover Project
 
-Use Sattelite data to measure the amount of tree cover in parks and cities. Use Boston and New York Tree Data sets as ground truth for our finetuned model. 
+Use Satellite data to measure the amount of tree cover in parks and cities. Use Boston and New York Tree Data sets as ground truth for our finetuned model. 
 
 Combine this with local bylaws about the number of trees a developer should have planted during a new project. 
 
