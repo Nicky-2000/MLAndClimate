@@ -1,12 +1,10 @@
 ## Abstract
 
-## Forest Cover Project
+## Scalable Compliance Monitoring of Tree Cover By-Laws in Municipalities
 
-Use satellite data to measure the amount of tree cover in parks and cities. Use Boston and New York tree data sets as ground truth for our finetuned model. 
+In order to enforcing a communities green space by-laws it is essential to have accurate tree planting/cover data. This project aims to develop a scalable system for detecting tree planting compliance violations by property developers.
 
-Combine this with local bylaws about the number of trees a developer should have planted during a new project. 
+We will use satellite imagery and biomass data (e.g., GEDI) to build a ML model capable of estimating tree cover in urban and suburban areas. To ensure accuracy, we will fine-tune a model (Probably a segmentation model?) and use Boston and New York’s tree datasets as ground truth for this finetuning process. We will then cross reference our models tree cover estimates with municipalities bylaws to try and identify discrepancies between mandated tree coverage and actual tree coverage.
+- To extract tree cover guidelines from municipality by-laws, at scale, we will look into developing a DocETL or DSPy agent workflow enabling us to parse the by-laws of many different municipalities. If this is unfeasible we will scope the project down to exploring one or two municipalites.
 
-Rough Pipeline:
-
-
-Value of the project: Give small towns a tool to easily monitor their tree cover bylaws and rules.
+This project is valuable because it could could provide small municipalities with a cost-effective tool for monitoring compliance, helping them enforce tree-planting regulations without expensive and time consuming inspections. Additionally, should this project prove successful, we could apply a similar methodology to verify reforestation carbon credits (i.e. compare reported tree panting with real-world satellite/biomass data).
