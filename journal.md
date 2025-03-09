@@ -1,4 +1,16 @@
 
+# Sunday March 2nd - Saturday March 8th
+- Met to discuss the best datasources to use
+- There are good tree datasets already out there to use as ground truth
+
+- Atalanta has some interesting by-laws. 
+- Specifically they require 1 tree for every 8 parking spots in a parking lot.
+https://library.municode.com/ga/atlanta/codes/code_of_ordinances/177780?nodeId=PTIICOORENOR_CH158VE
+
+
+Also looking into some Virtual Power Plant project. This seems like a more interesting space.
+- Read a couple of review papers about data driven VPP control systems
+- Trying to understand if it is possible to do something related to VPPs
 
 # Sunday February 23rd - Saturday March 1st
 
