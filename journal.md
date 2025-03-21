@@ -5,6 +5,10 @@ Looking into setting up the simulation environment.
 
 EV2Gym Paper: https://arxiv.org/abs/2404.01849
 
+Action Items for next week: 
+1. Go through the EV2Gym repo and understand its capabilities and limitations
+2. Set up config files that include about 100 houses each with an EV
+3. Figure out how to have 100 houses being controlled together, Figure out how to make it so we can have groups of variables sizes being controlled together (so groups of 10 houses are individually controlled)
 
 # Sunday March 9th - Saturday March 15th
 
