@@ -1,0 +1,3 @@
+[submodule "EV2Gym"]
+	path = EV2Gym
+	url = https://github.com/StavrosOrf/EV2Gym.git
