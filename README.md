@@ -1,4 +1,4 @@
-## Tree Cover By-Law Compliance
+## The Impact of Coordination Scale on Vehicle-to-Grid Reinforcement Learning Optimization 
 
 `abstract.md` contains a brief description of the project and it's goals
 

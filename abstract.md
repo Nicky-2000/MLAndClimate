@@ -1,7 +1,7 @@
 ## Abstract
 
 
-## Exploring the Impact of Coordination Scale on Vehicle-to-Grid Reinforcement Learning Optimization 
+## The Impact of Coordination Scale on Vehicle-to-Grid Reinforcement Learning Optimization 
 
 
 
@@ -19,7 +19,7 @@ We are aiming to evaluate two key metrics:
 
 
 
-# OLD ABSTRACT:
+# OLD ABSTRACT now Deprecated!!
 ## Scalable Compliance Monitoring of Tree Cover By-Laws in Municipalities
 
 In order to enforce a community's green space by-laws, it is essential to have accurate tree planting/cover data. This project aims to develop a scalable system for detecting tree planting compliance violations by property developers.
