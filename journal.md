@@ -3,6 +3,8 @@
 Found a good simulation environment that can help us set up our experiment: https://github.com/StavrosOrf/EV2Gym
 Looking into setting up the simulation environment.
 
+EV2Gym Paper: https://arxiv.org/abs/2404.01849
+
 
 # Sunday March 9th - Saturday March 15th
 
