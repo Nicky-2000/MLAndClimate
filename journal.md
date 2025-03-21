@@ -1,3 +1,19 @@
+# Sunday March 16th - Saturday March 22nd
+
+Found a good simulation environment that can help us set up our experiment: https://github.com/StavrosOrf/EV2Gym
+Looking into setting up the simulation environment.
+
+
+# Sunday March 9th - Saturday March 15th
+
+- More reserach into RL for VPPs
+- Read this paper: Reinforcement learning for electric vehicle applications in power systems: A critical review
+    - Link: https://www.sciencedirect.com/science/article/pii/S1364032122009339
+
+Reading this gave understanding of how RL is currently being used to control multiple power producing assets. 
+
+What we got from this paper: We narrowed our focus onto the Vehicle 2 Grid subproblem in which the action set is {charge, discharge} for each vehicle. 
+We also decided we were going to primarly focus on a "cost" metric since this seems like the most managable option. 
 
 # Sunday March 2nd - Saturday March 8th
 - Met to discuss the best datasources to use
