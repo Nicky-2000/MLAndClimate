@@ -1,3 +1,47 @@
+# Sunday March 23rd - Saturday March 29th
+
+Weekly Achievements: 
+1. Read, understood, and tinkered with EV2Gym.
+2. Started to set up some sample simulation envrionments.
+3. Dicussed project with Nicolas and ideated a high level overview of our project report
+
+Tentative Flow for Project Report (which guides how we will be running simulations): 
+
+Centralized control and execution has been shown to be much more effective than centralized control decentralized execution in terms of coordinating DERs and EV charging
+
+However, there are two main bottlenecks to this approach 
+1: As the number of EVs / DERs increases the dimensionality of the optimisation increases. At some point it becomes computationally intractable to run certain algorithms
+
+2: Privacy. Many people are, rightly, concerned about sharing their electricity usuage patterns with another entity. However, there is wiggle room here. Most people would be fine with sharing their data with their neighbour, what about their 10 neighbours... 
+- If there is enough of an incentive (monetary) then I believe some people would be willing to do some partial datasharing.
+
+
+Therefore, philosophically, we believe there is a sweet spot in regards to coordinated EV charging and discharging that would both computationally tractable and provide enough benefit to consumers to incentive them to accept sharing data at a local level. 
+
+
+Methodology: 
+Run simulations with 100 houses and one algorithm (iterate through the algos) controlling them all. Collect metrics
+
+Run simulations with 100 houses split into two groups of 50 where each group is controlled by a separate algo (iterate through all the algos). Collect metrics at the 100 house scale (maybe we can have "Money Saved per house" metric)
+
+Split into 4 groups of 25... repeat the same process.
+
+
+We have 3 dimensions to our collected data. 
+Dimension 1: Size of group, (this includes control algo runtime)
+Dimension 2: Money Saved per house (compared to everyone just running 'Charge as Fast as Possible' algorithm)
+Dimension 3: Type of Algo (different families scale better)
+
+
+Ambitious Target for project:
+If we can get to it... We will try to develop our own RL algo (potentially make a PR to EV2Gym with a new algo).
+
+
+Action Items for next week:
+1. Begin running simulations at scale.
+2. Test at least 2 different algos on two different group scales.
+
+
 # Sunday March 16th - Saturday March 22nd
 
 Found a good simulation environment that can help us set up our experiment: https://github.com/StavrosOrf/EV2Gym
