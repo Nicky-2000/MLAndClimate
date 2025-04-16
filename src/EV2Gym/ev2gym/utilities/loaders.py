@@ -447,3 +447,38 @@ def load_electricity_prices(env) -> Tuple[np.ndarray, np.ndarray]:
 
     discharge_prices = discharge_prices * env.config['discharge_price_factor']
     return charge_prices, discharge_prices
+
+
+def load_weekly_EV_profiles(env) -> List[EV]:
+    vehicle_profiles_by_day_file = pkg_resources.resource_filename(
+        'ev2gym', 'data/vehicle_profiles_by_day.parquet')
+    
+    df = pd.read_parquet(vehicle_profiles_by_day_file)
+
+    
+    day_map = {1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday",
+               5: "Friday", 6: "Saturday", 7: "Sunday"}
+
+    days_of_week = {day: df[df['day'] == day].copy() for day in range(1, 8)}
+
+    weekly_profiles = []
+
+    for i in range(env.cs):  # One EV per charging station
+        ev_week = {}
+        for day in range(1, 8):
+            day_df = days_of_week[day]
+
+            # Randomly sample one profile for this day
+            if len(day_df) == 0:
+                raise ValueError(f"No trip data available for day {day_map[day]}")
+            
+            # Make sure that each EV has a different seed. But still remain deterministic and reproducible
+            seed = hash(f"{i}_{day}") % (2**32)
+            sampled_row = day_df.sample(n=1, random_state=seed).iloc[0]
+
+            ev_week[day] = sampled_row['trips']  # list of (departure, arrival, miles)
+
+        weekly_profiles.append(ev_week)
+        
+    return weekly_profiles
+

@@ -6,7 +6,7 @@ from EV2Gym.ev2gym.baselines.heuristics import ChargeAsFastAsPossible
 # Change current working directory to EV2Gym submodule directory
 os.chdir(os.path.dirname(os.path.abspath(__file__)) + "/EV2Gym")
 
-config_file = "../config_files/100_houses.yaml"
+config_file = "../config_files/3_houses.yaml"
 
 # Initialize the environment
 env = EV2Gym(config_file=config_file,

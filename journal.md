@@ -1,3 +1,21 @@
+# Sunday April 13th - Saturday April 19th
+
+Tuesday April 15th -- Have a working simulator!!
+See Here: https://github.com/Nicky-2000/EV2Gym-DrivewayV1
+- Note: it made more sense to abstract this out into another repo.
+    So commits to EV2Gym-DrivewayV1 repo are just as important as commits to this repo
+
+Note 2: When the simulator code in the other repo is fully working (with RL algo) then 
+we will integrate it into this repo for our experiments.
+
+# Sunday April 6th - Saturday April 12th
+Dove very deep into EV2Gym simulator. Started to re work it so it will work for our simulation. 
+Lots of work needs to be done here but it is doable!
+
+
+# Sunday March 30th - Saturday April 5th
+Mainly focused on problem set. Not too much work done.
+
 # Sunday March 23rd - Saturday March 29th
 
 Weekly Achievements: 

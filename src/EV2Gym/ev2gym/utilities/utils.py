@@ -522,6 +522,47 @@ def EV_spawner(env) -> List[EV]:
 
     return ev_list
 
+def EV_spawner_for_driveways(env) -> List[EV]:
+    '''
+    Spawns 1 EV for each charging station
+
+    Returns:
+        EVs: list of EVs (1 for each charging station)
+    '''
+
+    ev_list = []
+
+
+    scenario = env.scenario
+
+    # Define minimum time of stay duration so that an EV can fully charge
+    min_time_of_stay = env.config['ev']["min_time_of_stay"]
+    min_time_of_stay_steps = min_time_of_stay // env.timescale
+
+    if env.simulation_length-min_time_of_stay_steps-1 < 0:
+        raise ValueError(
+            "Simulation length is too short for the minimum time of stay! Increase the simulation length or decrease the minimum time of stay.")
+
+    ## WE SHOULD CHANGE THIS Probablyyyy
+    for cs in env.charging_stations:
+        assert cs.n_ports == 1, "Only one port per charging station is allowed for driveways"
+        for port in range(cs.n_ports):
+            ev = spawn_single_EV(env=env,
+                                    scenario=scenario,
+                                    cs_id=cs.id,
+                                    port=port,
+                                    hour=0,
+                                    minute=0,
+                                    step=0,
+                                    min_time_of_stay_steps=min_time_of_stay_steps)
+
+            if ev is None:
+                raise ValueError(
+                    "EV is None! Check the EV spawning function.")
+            ev_list.append(ev)
+
+    return ev_list
+
 
 def EV_spawner_GF(env) -> List[EV]:
     '''

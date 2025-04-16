@@ -13,7 +13,7 @@ class EV_Charger:
         - connected_bus: the bus to which the EV charger is connected
         - connected_transformer: the transformer(s) to which the EV charger is connected
         - geo_location: the geographical location of the EV charger                
-        - n_ports: the number of ports of the EV charger
+        - n_ports: the number of ports of the EV chargers
         - charger_type: the type of the EV charger (typ1, type2, or DC)
         - bi_directional: whether the EV charger can provide power to the grid or not
         - timescale: the timescale of the simulation (useful for determining the charging speed)
@@ -110,8 +110,12 @@ class EV_Charger:
         self.total_evs_served = 0
         self.total_user_satisfaction = 0
         self.all_user_satisfaction = []
+        
+    def attached_ev_to_charger(self, ev, ev_weekly_profile):
+        self.ev_for_charger = ev
+        self.ev_weekly_profile = ev_weekly_profile
 
-    def step(self, actions, charge_price, discharge_price):
+    def step(self, actions, charge_price, discharge_price, sim_timestamp):
         '''
         Updates the EV charger status according to the actions taken by the EVs
         Inputs:
@@ -130,6 +134,18 @@ class EV_Charger:
         self.current_charge_price = charge_price
         self.current_discharge_price = discharge_price
         self.current_signal = []
+        ## Determine if the EV is connected or not during this timestep
+        # Get day of week from sim_timestamp. 
+        # Get the vehicle profile for that day. 
+        # check if the vehicle is parked or not based on the trip.
+        # if a vehicle is arriving back. Calculate its SoC based on the trip miles.
+        weekday = sim_timestamp.weekday() + 1 # Monday == 1, Tues == 2, ..., Sunday == 7 in our data
+        daily_profile_of_ev = self.ev_weekly_profile[weekday]
+        if daily_profile_of_ev.empty() == True:
+            # Car is parked all day
+            self.evs_connected[i] = self.ev_for_charger
+        else: 
+            # Car takes some trips during the day.
 
         assert (len(actions) == self.n_ports)
         # if no EV is connected, set action to 0
@@ -150,6 +166,9 @@ class EV_Charger:
 
         if self.verbose:
             print(f'CS {self.id} normalized actions: {normalized_actions}')
+
+        ## Idea: Check the EV profile and see if the EV is connected
+
 
         # Update EVs connected to the EV charger and get profits/costs
         for i, action in enumerate(normalized_actions):

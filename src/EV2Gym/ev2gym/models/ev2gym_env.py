@@ -18,8 +18,8 @@ import json
 # from .grid import Grid
 from ev2gym.models.replay import EvCityReplay
 from ev2gym.visuals.plots import ev_city_plot, visualize_step
-from ev2gym.utilities.utils import get_statistics, print_statistics, calculate_charge_power_potential
-from ev2gym.utilities.loaders import load_ev_spawn_scenarios, load_power_setpoints, load_transformers, load_ev_charger_profiles, load_ev_profiles, load_electricity_prices
+from ev2gym.utilities.utils import EV_spawner_for_driveways, get_statistics, print_statistics, calculate_charge_power_potential, spawn_single_EV
+from ev2gym.utilities.loaders import load_ev_spawn_scenarios, load_power_setpoints, load_transformers, load_ev_charger_profiles, load_ev_profiles, load_electricity_prices, load_weekly_EV_profiles
 from ev2gym.visuals.render import Renderer
 
 from ev2gym.rl_agent.reward import SquaredTrackingErrorReward
@@ -213,6 +213,13 @@ class EV2Gym(gym.Env):
             load_ev_spawn_scenarios(self)
 
         # Spawn EVs
+        self.weekly_EV_profiles = load_weekly_EV_profiles(self)
+        self.EVs_for_driveways = EV_spawner_for_driveways(self)
+        # Attach EVs to charging stations
+        for cs, ev, ev_profile in zip(self.charging_stations, self.EVs_for_driveways , self.weekly_EV_profiles):
+            cs.attached_ev_to_charger(ev, ev_profile)
+            
+
         self.EVs_profiles = load_ev_profiles(self)
         self.EVs = []
 
@@ -423,10 +430,13 @@ class EV2Gym(gym.Env):
         # Call step for each charging station and spawn EVs where necessary
         for i, cs in enumerate(self.charging_stations):
             n_ports = cs.n_ports
+            assert n_ports == 1, "Only one port is supported for now"
+            
             costs, user_satisfaction, invalid_action_punishment, ev = cs.step(
                 actions[port_counter:port_counter + n_ports],
                 self.charge_prices[cs.id, self.current_step],
-                self.discharge_prices[cs.id, self.current_step])
+                self.discharge_prices[cs.id, self.current_step],
+                self.sim_date)
 
             self.departing_evs += ev
 
@@ -445,6 +455,7 @@ class EV2Gym(gym.Env):
 
             port_counter += n_ports
 
+        
         # Spawn EVs
         counter = self.total_evs_spawned
         for i, ev in enumerate(self.EVs_profiles[counter:]):
