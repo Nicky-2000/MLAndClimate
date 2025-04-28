@@ -1,3 +1,7 @@
+# Sunday April 20th - Saturday April 27th
+
+Mostly worked on preparing presentation slides and recording.
+
 # Sunday April 13th - Saturday April 19th
 
 Tuesday April 15th -- Have a working simulator!!
