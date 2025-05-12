@@ -1,6 +1,6 @@
 # Sunday April 28th - Sunday May 11th
 
-Worked on finishing project and final paper.
+Worked on finishing project and final paper. Note that the DQN stuff is on a separate branch from main.
 
 # Sunday April 20th - Saturday April 27th
 
