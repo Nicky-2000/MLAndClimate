@@ -1,3 +1,7 @@
+# Sunday April 28th - Sunday May 11th
+
+Worked on finishing project and final paper.
+
 # Sunday April 20th - Saturday April 27th
 
 Mostly worked on preparing presentation slides and recording.
